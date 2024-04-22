@@ -157,8 +157,11 @@ def a_star(graph, start, goal):
         children = []
         for neighbor, distance in graph[current_node.name].items():
             child_node = Node(neighbor, current_node, distance)
+            # Cálculo do custo real (g(n)), somasse o custo do nó atual ao custo da aresta que leva ao nó filho
             child_node.distance = current_node.distance + distance
+            # Cálculo do custo heurístico (h(n)), retorna uma heurística simples de distância em linha reta do nó atual ao nó destino
             child_node.heuristic = heuristic_cost(neighbor)
+            # Cálculo do custo total (f(n)), é calculando somando os dois valores anteriores, g(n) e h(n)
             child_node.f = child_node.distance + child_node.heuristic
             children.append(child_node)
 
@@ -176,7 +179,7 @@ def a_star(graph, start, goal):
                 # Adiciona o filho à lista aberta
                 heapq.heappush(open_list, (child.f, child))
 
-    return None  # Retorna None se não houver caminho encontrado
+    return None # Retorna None se não houver caminho encontrado
 
 # Exemplo de uso
 if __name__ == "__main__":
