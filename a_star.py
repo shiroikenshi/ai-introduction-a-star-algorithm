@@ -183,7 +183,7 @@ def a_star(graph, start, goal):
 
 # Exemplo de uso
 if __name__ == "__main__":
-    # Define o mapa de Bucareste
+    # Define o mapa da Romênia
     graph = romania_map()
     
     # Define o ponto de partida e o ponto de chegada
