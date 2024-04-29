@@ -130,6 +130,10 @@ def a_star(graph, start, goal):
     Returns:
         list: O caminho mais curto do nó inicial ao nó de destino.
     """
+    # Verifica se o nó de destino está presente no grafo
+    if goal not in graph:
+        return None
+    
     # Inicializa os nós de início e fim
     start_node = Node(start)
     goal_node = Node(goal)
@@ -183,9 +187,7 @@ def a_star(graph, start, goal):
             else:
                 # Adiciona o filho à lista aberta
                 heapq.heappush(open_list, (child.f, child))
-
-    return None  # Retorna None se não houver caminho encontrado
-
+                
 # Exemplo de uso
 if __name__ == "__main__":
     # Define o mapa da Romênia
@@ -210,4 +212,4 @@ if __name__ == "__main__":
     if path:
         print("\nCaminho encontrado:", path, "\n")
     else:
-        print("\nNão foi possível encontrar um caminho.\n")
+        print("\nO destino não está presente no grafo.\n")
