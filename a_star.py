@@ -27,6 +27,8 @@ class Node:
 
     def __eq__(self, other):
         """
+        Quando utilizado o operador de igualdade entre dois objetos.
+
         Verifica se dois nós são iguais.
 
         Args:
@@ -39,6 +41,8 @@ class Node:
 
     def __lt__(self, other):
         """
+        Quando utilizado o operador de menor ou menor ou igual entre dois objetos.
+
         Verifica se o custo total deste nó é menor que o custo total de outro nó.
 
         Args:
@@ -156,13 +160,14 @@ def a_star(graph, start, goal):
         # Gera os nós filhos
         children = []
         for neighbor, distance in graph[current_node.name].items():
+            # Define o vizinho de current_node como nó filho
             child_node = Node(neighbor, current_node, distance)
             # Cálculo do custo real (g(n)), somasse o custo do nó atual ao custo da aresta que leva ao nó filho
             child_node.distance = current_node.distance + distance
             # Cálculo do custo heurístico (h(n)), retorna uma heurística simples de distância em linha reta do nó atual ao nó destino
             child_node.heuristic = heuristic_cost(neighbor)
             # Cálculo do custo total (f(n)), é calculando somando os dois valores anteriores, g(n) e h(n)
-            child_node.f = child_node.distance + child_node.heuristic
+            child_node.f = child_node.distance + child_node.heuristic # f(n) = g(n) + h(n)
             children.append(child_node)
 
         # Loop através dos nós filhos
@@ -179,7 +184,7 @@ def a_star(graph, start, goal):
                 # Adiciona o filho à lista aberta
                 heapq.heappush(open_list, (child.f, child))
 
-    return None # Retorna None se não houver caminho encontrado
+    return None  # Retorna None se não houver caminho encontrado
 
 # Exemplo de uso
 if __name__ == "__main__":
