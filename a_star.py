@@ -2,7 +2,7 @@
 Algoritmo A* implementado no mapa da Romênia
 
 Autor:
-    Felipe Pinto da Silva    - 26533952
+    Felipe Pinto da Silva
 """
 import heapq # Manipular lista
 import os # Limpar terminal
